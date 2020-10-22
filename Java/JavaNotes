@@ -4,10 +4,64 @@ Java Notes
 
 OOP 
 
+Java OOP Concepts
+
+OOP stands for Object-Oriented Programming.
+
+Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.
+
+Object-oriented programming has several advantages over procedural programming:
+
+OOP is faster and easier to execute
+OOP provides a clear structure for the programs
+OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
+OOP makes it possible to create full reusable applications with less code and shorter development time
+
+Java is platform independent and can be executed on any OS because it is Java is compiled and interpreted which is what makes it popular
+
+Java code is compiled and produces Java byte code
+
+Java source (.java) --> Java Compiler --> Java bytecode (.class)
+
+This byte code is then passed to the interpreter to run based on the system 
+
+the main method is the entry point of your java code 
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
+    }
+}
+
+Java is object oriented because you have to create objects in order to call the operations defined within a class (using the new keyword)
+
+Major Concepts of OOP: 
+
+- Abstraction
+* abstraction is the process of hiding certain details 
+
 - Inheritance
+* a mechanism in Java by which one class is allowed to inherit the features (fields and methods) of another class
+* using key word extends will allow child class **code reusability** 
 
 - Encapsulation
 
-- Overloading
+- Polymorphism
+* ability of an object tot take on many forms. ie when a parent class reference is used to refer to a child class object
+* any java object that can pass more than one is-a test is considered to be polymorphic
+in java all objects are polymorphic since any object will pass the is-a test for their own type and the class Object
+* the only way to access an object is through a reference variable. a reference variable can be of only one type
+* performing a single operation in different ways
 
-- Overwriting
+* Overloading
+multiple functions with the same name, but different signature (ie number of parameters, type of parameters, etc) 
+related to compile-time (static) polymorphism
+
+* Overriding
+- override the functionality of an existing method
+
+in Java 
+
+2 examples of inheritance in the Java repo 
+
+

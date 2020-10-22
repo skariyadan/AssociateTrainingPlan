@@ -304,7 +304,7 @@ Any changes here will get reflected throughout the system and will affect all us
 
 User level Environment variables are mostly stored in .bashrc and .profile files in your Home folder. Changes here only affect that particular user. Just close and open the terminal for configuration changes to take place.
 
-10/20/2020
+10/20-21/2020
 
 PL/SQL Basics
 
@@ -812,13 +812,93 @@ user account;
 
 - TCL
 
+TCL stands for Transaction Control Statements. It will either save the pending transactions or roll back the pending transaction. These statements play the vital role because unless the transaction is saved the changes through DML statements will not be saved in the database. Below are the different TCL statements.
 
+Transactions are completed WHEN
+When any of the above statements is issued (except SAVEPOINT)
+When DDL statements are issued. (DDL are auto-commit statements)
+WHEN DCL statements are issued. (DCL are auto-commit statements)
 
-Triggers
+* COMMIT	Saves all the pending transaction
 
-Cursors
+* ROLLBACK	Discard all the pending transaction
 
-Views
+* SAVEPOINT	Creates a point in the transaction till which rollback can be done later
+
+* ROLLBACK TO	Discard all the pending transaction till the specified <save point>
+
+- Triggers
+
+Triggers are, in fact, written to be executed in response to any of the following events −
+
+* A database manipulation (DML) statement (DELETE, INSERT, or UPDATE)
+* A database definition (DDL) statement (CREATE, ALTER, or DROP).
+* A database operation (SERVERERROR, LOGON, LOGOFF, STARTUP, or SHUTDOWN).
+
+Triggers can be defined on the table, view, schema, or database with which the event is associated.
+
+Triggers can be written for the following purposes −
+
+Generating some derived column values automatically
+Enforcing referential integrity
+Event logging and storing information on table access
+Auditing
+Synchronous replication of tables
+Imposing security authorizations
+Preventing invalid transactions
+
+The syntax for creating a trigger is −
+
+CREATE [OR REPLACE ] TRIGGER trigger_name  
+{BEFORE | AFTER | INSTEAD OF }  
+{INSERT [OR] | UPDATE [OR] | DELETE}  
+[OF col_name]  
+ON table_name  
+[REFERENCING OLD AS o NEW AS n]  
+[FOR EACH ROW]  
+WHEN (condition)   
+DECLARE 
+   Declaration-statements 
+BEGIN  
+   Executable-statements 
+EXCEPTION 
+   Exception-handling-statements 
+END; 
+Where,
+
+* CREATE [OR REPLACE] TRIGGER trigger_name − Creates or replaces an existing trigger with the trigger_name.
+
+* {BEFORE | AFTER | INSTEAD OF} − This specifies when the trigger will be executed. The INSTEAD OF clause is used for creating trigger on a view.
+
+* {INSERT [OR] | UPDATE [OR] | DELETE} − This specifies the DML operation.
+
+* [OF col_name] − This specifies the column name that will be updated.
+
+* [ON table_name] − This specifies the name of the table associated with the trigger.
+
+* [REFERENCING OLD AS o NEW AS n] − This allows you to refer new and old values for various DML statements, such as INSERT, UPDATE, and DELETE.
+
+* [FOR EACH ROW] − This specifies a row-level trigger, i.e., the trigger will be executed for each row being affected. Otherwise the trigger will execute just once when the SQL statement is executed, which is called a table level trigger.
+
+* WHEN (condition) − This provides a condition for rows for which the trigger would fire. This clause is valid only for row-level triggers.
+
+example:
+CREATE OR REPLACE TRIGGER display_salary_changes 
+BEFORE DELETE OR INSERT OR UPDATE ON customers 
+FOR EACH ROW 
+WHEN (NEW.ID > 0) 
+DECLARE 
+   sal_diff number; 
+BEGIN 
+   sal_diff := :NEW.salary  - :OLD.salary; 
+   dbms_output.put_line('Old salary: ' || :OLD.salary); 
+   dbms_output.put_line('New salary: ' || :NEW.salary); 
+   dbms_output.put_line('Salary difference: ' || sal_diff); 
+END; 
+
+- Cursors
+
+- Views
 
 A View is a virtual relation that acts as an actual relation. It is not a part of logical relational model of the database system. Tuples of the view are not stored in the database system and tuples of the view are generated every time the view is accessed. Query expression of the view is stored in the databases system.
 
@@ -832,9 +912,10 @@ Database system uses one of the three ways to keep the materialized view updated
 Update the materialized view as soon as the relation on which it is defined is updated.
 Update the materialized view every time the view is accessed.
 Update the materialized view periodically.
-Materialized view is useful when the view is accessed frequently, as it saves the computation time, as the result are stored in the database before hand. Materialized view can also be helpful in case where the relation on which view is defined is very large and the resulting relation of the view is very small. Materialized view has storage cost and updation overheads associated with it.
+Materialized view is useful when the view is accessed frequently, as it saves the computation time, as the result are stored in the database before hand. Materialized view can also be helpful in case where the relation on which view is defined is very large and the resulting relation of the view is very small. Materialized view has storage cost and update overheads associated with it.
 
-Constraints
+- Constraints
+
 NOT NULL - Ensures that a column cannot have a NULL value
 UNIQUE - Ensures that all values in a column are different
 PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
@@ -843,8 +924,32 @@ CHECK - Ensures that all values in a column satisfies a specific condition
 DEFAULT - Sets a default value for a column when no value is specified
 INDEX - Used to create and retrieve data from the database very quickly
 
-debugging queries
+- Indexing
 
+- Backup
+
+- Housekeeping
+
+- BCK/Restore/Critical releases
+
+- NoSQL
+
+- Database tuning
+
+- query debugging
+
+- Query planning
+
+- Order of execution of a Query
+
+*FROM/JOIN
+*WHERE
+*GROUP BY
+*HAVING
+*SELECT
+*DISTINCT
+*ORDER BY
+*LIMIT/OFFSET
 
 
 
