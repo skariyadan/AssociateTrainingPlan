@@ -1,4 +1,10 @@
-import java.util.ArrayList;
+package inheritance;
+
+import inheritance.Car;
+import inheritance.Driver;
+import inheritance.Passenger;
+import inheritance.Person;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +28,7 @@ public class Runner
         Car c1 = new Car(d2, passengers2);
         Car c2 = new Car(d3, passengers1);
         Vehicle v3 = new Car(d3, passengers2);
-        System.out.println("Vehicle case");
+        System.out.println("inheritance.Vehicle case");
         v1.display();
         System.out.println("\nToo young driver case");
         v2.display();

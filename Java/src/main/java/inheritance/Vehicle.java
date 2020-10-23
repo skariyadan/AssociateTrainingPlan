@@ -1,3 +1,5 @@
+package inheritance;
+
 public class Vehicle
 {
     private int wheel;

@@ -38,13 +38,30 @@ Java is object oriented because you have to create objects in order to call the 
 Major Concepts of OOP: 
 
 - Abstraction
-* abstraction is the process of hiding certain details 
+* abstraction is the process of hiding certain details and showing only essential information to the user
+abstraction is achieved with either * abstract classes or * interfaces 
+* the abstract keyword is a non-access modifier used for classes and methods
+** abstract class is a restricted class that cannot be used to create objects
+** abstract method can only be used in an abstract class and it does not have a body
+Abstract class vs Interface
+
+Type of methods: Interface can have only abstract methods. Abstract class can have abstract and non-abstract methods. From Java 8, it can have default and static methods also.
+Final Variables: Variables declared in a Java interface are by default final. An abstract class may contain non-final variables.
+Type of variables: Abstract class can have final, non-final, static and non-static variables. Interface has only static and final variables.
+Implementation: Abstract class can provide the implementation of interface. Interface can’t provide the implementation of abstract class.
+Inheritance vs Abstraction: A Java interface can be implemented using keyword “implements” and abstract class can be extended using keyword “extends”.
+Multiple implementation: An interface can extend another Java interface only, an abstract class can extend another Java class and implement multiple Java interfaces.
+Accessibility of Data Members: Members of a Java interface are public by default. A Java abstract class can have class members like private, protected, etc.
 
 - Inheritance
 * a mechanism in Java by which one class is allowed to inherit the features (fields and methods) of another class
 * using key word extends will allow child class **code reusability** 
 
+
+
 - Encapsulation
+* the mechanism of wrapping data (variables) and code acting on the data together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
+Achieve encapsulation via private variables and use getters/setters to view/modify variable values 
 
 - Polymorphism
 * ability of an object tot take on many forms. ie when a parent class reference is used to refer to a child class object
@@ -60,8 +77,6 @@ related to compile-time (static) polymorphism
 * Overriding
 - override the functionality of an existing method
 
-in Java 
 
-2 examples of inheritance in the Java repo 
 
 

@@ -1,3 +1,7 @@
+package inheritance;
+
+import inheritance.Person;
+
 public class Passenger extends Person
 {
     private int luggage;
