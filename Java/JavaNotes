@@ -77,6 +77,14 @@ related to compile-time (static) polymorphism
 * Overriding
 - override the functionality of an existing method
 
+Exception Handling
+makes java program robust 
+
+checked exception 
+
+superclass of all checked exceptions is throwable
+
+unchecked exception 
 
 
 
